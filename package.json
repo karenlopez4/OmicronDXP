@@ -1,0 +1,48 @@
+{
+  "name": "pruebas",
+  "version": "1.0.0",
+  "description": "Pruebas de regresion",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run --browser chrome --headless",
+    "cypress:open": "cypress open",
+    "cy:run:chrome": "cypress run --browser chrome --headless",
+    "cy:run:login": "cypress run --spec cypress/e2e/login/*.spec.js --browser chrome --headless",
+    "cy:run:configuracion_receta": "cypress run --spec cypress/e2e/perfil/configuracion_receta/*.spec.js --browser chrome --headless",
+    "cy:run:direcciones_entrega": "cypress run --spec cypress/e2e/perfil/direcciones_entrega/*.spec.js --browser chrome --headless",
+    "cy:run:datos_fiscales": "cypress run --spec cypress/e2e/perfil/datos_fiscales/*.spec.js --browser chrome --headless",
+    "cy:run:catalogos:dermazone": "cypress run --spec cypress/e2e/catalogos/favoritos/dermazone/*.spec.js --browser chrome --headless",
+    "cy:run:catalogos:reve": "cypress run --spec cypress/e2e/catalogos/favoritos/reve/*.spec.js --browser chrome --headless",
+    "cy:run:catalogos:bioequal": "cypress run --spec cypress/e2e/catalogos/favoritos/bioequal/*.spec.js --browser chrome --headless",
+    "cy:run:catalogos:bioelite": "cypress run --spec cypress/e2e/catalogos/favoritos/bioelite/*.spec.js --browser chrome --headless",
+    "cy:run:faltantes:mp:fecha": "cypress run --spec cypress/e2e/faltantes/mp/faltantes-fecha/*.spec.js --browser chrome --headless",
+    "cy:run:faltantes:mp:sinfecha": "cypress run --spec cypress/e2e/faltantes/mp/faltantes-sin-fecha/*.spec.js --browser chrome --headless",
+    "cy:run:faltantes:envase:fecha": "cypress run --spec cypress/e2e/faltantes/envase/faltantes-sin-fecha/*.spec.js --browser chrome --headless",
+    "cy:run:faltantes:envase:sinfecha": "cypress run --spec cypress/e2e/faltantes/envase/faltantes-sin-fecha/*.spec.js --browser chrome --headless",
+    "cy:run:faltantes:pt:fecha": "cypress run --spec cypress/e2e/faltantes/pt/faltantes-sin-fecha/*.spec.js --browser chrome --headless",
+    "cy:run:faltantes:pt:sinfecha": "cypress run --spec cypress/e2e/faltantes/pt/faltantes-sin-fecha/*.spec.js --browser chrome --headless",
+    "cy:run:carrito": "cypress run --spec cypress/e2e/carrito/*.spec.js --browser chrome --headless",
+    "cy:run:carrito:bioelite": "cypress run --spec cypress/e2e/carrito/bioelite/*.spec.js --browser chrome --headless",
+    "cy:run:carrito:bioequal": "cypress run --spec cypress/e2e/carrito/bioequal/*.spec.js --browser chrome --headless",
+    "cy:run:carrito:dermazone": "cypress run --spec cypress/e2e/carrito/dermazone/*.spec.js --browser chrome --headless",
+    "cy:run:carrito:reve": "cypress run --spec cypress/e2e/carrito/reve/*.spec.js --browser chrome --headless",
+    "run:email": "node cypress/email.js"
+  },
+  "keywords": [
+    "tst"
+  ],
+  "author": "David",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.11.0",
+    "cypress-mochawesome-reporter": "^3.2.2",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "archiver": "^5.3.1",
+    "jszip": "^3.10.1",
+    "nodejs-nodemailer-outlook": "^1.2.4",
+    "nodemailer": "^6.7.8"
+  }
+}

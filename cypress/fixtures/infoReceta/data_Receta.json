@@ -1,0 +1,98 @@
+{
+    "precios": [
+        89.46,
+        76.69,
+        620.00,
+        160.00,
+        174.00,
+        255.00,
+        635.58,
+        716.47,
+        714.16,
+        1428.32,
+        231.12,
+        298.14
+    ],
+
+    "piezas": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        5,
+        5,
+        3,
+        2,
+        2,
+        2
+    ],
+
+    "producto1":"567",
+    "presentacionProducto1": "30 ML",
+
+    "producto2":"567",
+    "presentacionProducto2": "15 ML",
+
+    "producto3":"DZ 49",
+
+    "producto4":"DZ 21",
+
+    "producto5":"REVE 14",
+ 
+    "producto6":"REVE 26",
+
+    "producto7":"BQR 11",
+ 
+    "producto8":"BQR 09",
+
+    "producto9":"BQ 53",
+ 
+    "producto10":"BQ 54",
+  
+    "producto11":"BE 43",
+    "presentacionProducto11": "60 CAP",
+
+    "producto12":"BE 136",
+    "presentacionProducto12": "60 CAP",
+
+    
+
+    "envase1": "POMADERA 30mL",
+    "envase2": "ES-25 Airless Blanco Lineas Plata 15 ML",
+    "costoEnvase2": 46.17,
+    "principioActivo": [
+        "Metronidazol",
+        "BIEST",
+        "Testosterona",
+        "Progesterona",
+        "Pregnenolona",
+        "Acido Folico",
+        "Citrato De Calcio",
+        "Citrato De Magnesio",
+        "Citrato De Zinc",
+        "Vitamina B12",
+        "Vitamina C",
+        "Vitamina D3",
+        "Vitamina E",
+        "Vitamina K2"
+    ],
+    "codigo": [
+        "MP-166",
+        "",
+        "MP-500",
+        "MP-503",
+        "MP-510",
+        "MPN-018",
+        "MPN-034",
+        "MPN-032",
+        "MPN-033",
+        "MPN-042",
+        "MPN-016",
+        "MPN-041",
+        "MP-108",
+        "MPN-044"
+    ]
+
+}
