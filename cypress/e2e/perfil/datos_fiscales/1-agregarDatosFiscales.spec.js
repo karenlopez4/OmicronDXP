@@ -21,6 +21,8 @@ describe("Datos fiscales", function (){
         datosFiscales.botonGuardarDatos();
 
         //Validacion
-        cy.contains("Los datos fiscales se agregaron con éxito").should('exist');
+        cy.contains('span', 'Los datos fiscales se agregaron con éxito')
+       .should('exist');
+        cy.get('button[name="btn-accept"]').click();
     });  
 });

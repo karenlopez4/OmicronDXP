@@ -4,7 +4,9 @@ var codigos = ['03820', '03240', '03230', '03400', '03560', '03610', '03840', '0
 class datosFiscalesPage {
 
     botonAgregarDatosFiscales(){
-        cy.get('button[name="btn-add-tax-data"]').click();
+        //cy.get('button[name="btn-add-tax-data"]').click();
+        cy.contains('button', 'Agregar nuevos datos').click();
+
     };
 
     botonGuardarDatos(){
@@ -24,6 +26,9 @@ class datosFiscalesPage {
         cy.get('input[formcontrolname="correo"]').clear().type(correoFiscal);
         cy.get('mat-select[formcontrolname="cfdi"]').click();
         cy.get('mat-option[tabindex="0"]').first().click();
+        cy.get('#mat-select-6').click(); // Abre el select
+        cy.get('mat-option').contains('Coordinados').click(); // Selecciona la opción
+
     };
 
     editarDatosFiscales(){
@@ -36,6 +41,8 @@ class datosFiscalesPage {
         cy.get('input[formcontrolname="number"]').type(Math.floor(Math.random() * (75 - 25 + 1)) + 25);
         cy.get('mat-select[formcontrolname="cfdi"]').click();
         cy.get('mat-option[tabindex="0"]').first().click();
+         cy.get('#mat-select-6').click(); // Abre el select
+        cy.get('mat-option').contains('Incorporación Fiscal').click(); // Selecciona la opción
     }
 
     eliminarDatosFiscales(razonSocial) {
@@ -43,10 +50,14 @@ class datosFiscalesPage {
     };
 
     botonEditarDatosFiscales(razonSocial) {
-        cy.get(`p[id="btn-${razonSocial.toLowerCase()}-edit"]`).click();
-    };
-
-
+    cy.contains('p', `RAZÓN SOCIAL: ${razonSocial}`)
+        .parentsUntil('app-tax-direction')
+        .parent()
+        .within(() => {
+        cy.contains('div', 'Editar')
+            .click();
+        });
+    }
 }
 
 export default datosFiscalesPage;

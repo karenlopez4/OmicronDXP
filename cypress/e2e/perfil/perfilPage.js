@@ -1,6 +1,7 @@
 
 class paginaPerfil{
     botonPerfil() { 
+        cy.get('.menu-icon-toggle').should('be.visible').click();
         cy.get('p[id="btn-my-profile"]').click(); 
     }
     botonConfigReceta(){

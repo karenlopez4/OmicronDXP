@@ -12,6 +12,7 @@ describe("Direccion de entrega", function (){
     });
     it("Validar que se pueda agregar una direccion en direccion de entrega", function(){
         log.login(this.login.url,this.login.correo,this.login.contrasena);
+        debugger;
         perfil.botonPerfil();
         perfil.botonDireccionesEntrega();
         direccionEntrega.botonAgregarDireccionEntrega();

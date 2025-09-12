@@ -21,7 +21,6 @@ describe("Datos fiscales", function (){
 
         //Validacion
         cy.contains("Los datos fiscales se agregaron con éxito").should("exist");
-
-
+        cy.get('button[name="btn-accept"]').click();
     });  
 });

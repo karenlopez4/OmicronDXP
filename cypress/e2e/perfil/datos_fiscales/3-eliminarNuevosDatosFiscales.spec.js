@@ -19,5 +19,6 @@ describe("Datos fiscales", function (){
         perfil.botonAceptar();
         //Validacion
         cy.contains("Los datos fiscales fueron eliminados con éxito").should("exist");
+         cy.get('button[name="btn-accept"]').click();
     });  
 });
