@@ -39,19 +39,25 @@ describe("Datos fiscales", () => {
       datosFiscalesData.correoFiscal
     );
     datosFiscales.botonGuardarDatos();
-    datosFiscales.validarMensajeExito('Los datos fiscales se agregaron con éxito');
+    cy.esperarSpinnerSiExiste();
+    //datosFiscales.validarMensajeExito('Los datos fiscales se agregaron con éxito');
+     cy.validarMensajeExito("Los datos fiscales se agregaron con éxito");
   });
 
   it("Editar datos fiscales @regression", () => {
     datosFiscales.botonEditarDatosFiscales(datosFiscalesData.razonSocial);
     datosFiscales.editarDatosFiscales();
     datosFiscales.botonGuardarDatos();
-    datosFiscales.validarMensajeExito('Los datos fiscales se agregaron con éxito');
+    cy.esperarSpinnerSiExiste();
+    //datosFiscales.validarMensajeExito('Los datos fiscales se editaron con éxito');
+     cy.validarMensajeExito("Los datos fiscales se agregaron con éxito"); // deberia decir se editaron
   });
 
   it("Eliminar datos fiscales @regression", () => {
     datosFiscales.eliminarDatosFiscales(datosFiscalesData.razonSocial);
     perfil.botonAceptar();
-    datosFiscales.validarMensajeExito('Los datos fiscales fueron eliminados con éxito');
+    cy.esperarSpinnerSiExiste();
+   // datosFiscales.validarMensajeExito('Los datos fiscales fueron eliminados con éxito');
+    cy.validarMensajeExito("Los datos fiscales fueron eliminados con éxito");
   });
 });

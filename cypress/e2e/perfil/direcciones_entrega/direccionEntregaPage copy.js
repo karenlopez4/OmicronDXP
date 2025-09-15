@@ -79,9 +79,15 @@ class direccionEntregaPage {
         cy.get('input[formcontrolname="References"]').clear().type(referenciasDireccion2);
         cy.get('button[name="btn-save"]').click();
         
-        cy.esperarSpinnerSiExiste();
-        cy.validarMensajeExito("La dirección de entrega se actualizó con éxito");
+        // 1. Esperar opcionalmente a que aparezca el spinner (si puede tardar en cargar)
+cy.get('.la-ball-clip-rotate-pulse', { timeout: 10000 }).should('exist');
 
+// 2. Esperar a que desaparezca el spinner
+cy.get('.la-ball-clip-rotate-pulse', { timeout: 20000 }).should('not.exist');
+
+           cy.contains('span', 'La dirección de entrega se actualizó con éxito')
+       .should('exist');
+        cy.get('button[name="btn-accept"]').click();
 
         //Validaciones
         cy.contains(nombre2.toUpperCase()).should('exist');
