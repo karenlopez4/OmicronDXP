@@ -3,6 +3,17 @@ var codigos = ['03820', '03240', '03230', '03400', '03560', '03610', '03840', '0
     '03660', '03310', '03700', '03200', '03600', '03530', '03330', '03550'];
 class direccionEntregaPage {
 
+    seleccionarTabDireccionEntregaMedico() {
+        cy.get('[role="tab"]')
+        .contains('Direcciones de Entrega Pacientes') //Médico
+        .then(($tab) => {
+            if (!$tab.hasClass('mat-tab-label-active')) {
+                cy.wrap($tab).click();
+            }
+        });
+   }
+
+    
     botonAgregarDireccionEntrega() {
         cy.get('button[name="btn-add-address-delivery"]').first().click();
     };
@@ -29,7 +40,18 @@ class direccionEntregaPage {
 
 
     botonEditarDireccion(alias) {
-        cy.get(`p[id="btn-${alias.toLowerCase()}-edit"]`).first().click();
+    const id = `btn-${alias.toLowerCase()}-edit`;
+    const escapedId = CSS.escape(id);
+
+    cy.get(`#${escapedId}`).then($els => {
+        console.log(`Elementos encontrados: ${$els.length}`);
+    });
+
+    cy.get(`#${escapedId}`)
+        .first()
+        .scrollIntoView()
+        .should('be.visible')
+        .click();
     }
 
 
@@ -56,6 +78,15 @@ class direccionEntregaPage {
         cy.get('input[formcontrolname="BetweenStreets"]').clear().type(entrecalles2);
         cy.get('input[formcontrolname="References"]').clear().type(referenciasDireccion2);
         cy.get('button[name="btn-save"]').click();
+        
+        // 1. Esperar opcionalmente a que aparezca el spinner (si puede tardar en cargar)
+cy.get('.la-ball-clip-rotate-pulse', { timeout: 10000 }).should('exist');
+
+// 2. Esperar a que desaparezca el spinner
+cy.get('.la-ball-clip-rotate-pulse', { timeout: 20000 }).should('not.exist');
+
+           cy.contains('span', 'La dirección de entrega se actualizó con éxito')
+       .should('exist');
         cy.get('button[name="btn-accept"]').click();
 
         //Validaciones

@@ -15,11 +15,16 @@ describe("Direccion de entrega", function (){
         debugger;
         perfil.botonPerfil();
         perfil.botonDireccionesEntrega();
+        direccionEntrega.seleccionarTabDireccionEntregaMedico();
         direccionEntrega.botonAgregarDireccionEntrega();
         direccionEntrega.datosDireccionEntrega(this.datos.alias,this.datos.nombrePersona,this.datos.calle,this.datos.telefono,this.datos.establecimiento,this.datos.entrecalles,this.datos.referenciasDireccion);
-        perfil.botonGuardar();
-        
-        //Validacion
-        cy.contains("La dirección de entrega se agregó con éxito").should('exist');
+        perfil.botonGuardar();     
+           // 1. Esperar opcionalmente a que aparezca el spinner (si puede tardar en cargar)
+cy.get('.la-ball-clip-rotate-pulse', { timeout: 10000 }).should('exist');
+// 2. Esperar a que desaparezca el spinner
+cy.get('.la-ball-clip-rotate-pulse', { timeout: 20000 }).should('not.exist');
+         cy.contains('span', 'La dirección de entrega se agregó con éxito')
+       .should('exist');
+        cy.get('button[name="btn-accept"]').click();
     });  
 });

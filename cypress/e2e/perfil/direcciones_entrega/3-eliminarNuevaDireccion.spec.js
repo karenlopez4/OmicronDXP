@@ -14,10 +14,19 @@ describe("Direccion de entrega", function (){
         log.login(this.login.url,this.login.correo,this.login.contrasena);
         perfil.botonPerfil();
         perfil.botonDireccionesEntrega();
+        direccionEntrega.seleccionarTabDireccionEntregaMedico();
         direccionEntrega.botonEliminarDireccion(this.datos.alias);
         perfil.botonAceptar();
 
-        //Validacion
-        cy.contains("La dirección de entrega fue eliminada con éxito").should("exist");
+           // 1. Esperar opcionalmente a que aparezca el spinner (si puede tardar en cargar)
+cy.get('.la-ball-clip-rotate-pulse', { timeout: 10000 }).should('exist');
+
+// 2. Esperar a que desaparezca el spinner
+cy.get('.la-ball-clip-rotate-pulse', { timeout: 20000 }).should('not.exist');
+
+           cy.contains('span', 'La dirección de entrega fue eliminada con éxito')
+       .should('exist');
+        cy.get('button[name="btn-accept"]').click();
+        
     });  
 });

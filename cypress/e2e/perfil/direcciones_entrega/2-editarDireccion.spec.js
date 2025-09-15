@@ -14,10 +14,11 @@ describe("Direccion de entrega", function (){
         log.login(this.login.url,this.login.correo,this.login.contrasena);
         perfil.botonPerfil();
         perfil.botonDireccionesEntrega();
-
+        direccionEntrega.seleccionarTabDireccionEntregaMedico();
         direccionEntrega.botonEditarDireccion(this.datos.alias);
         direccionEntrega.datosEditarDireccion(this.datos.nombrePersona,this.datos.calle,this.datos.establecimiento,this.datos.entrecalles,this.datos.referenciasDireccion);
         
+       
 
     });  
 });
