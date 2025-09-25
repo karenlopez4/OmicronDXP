@@ -30,7 +30,7 @@ describe("Datos fiscales", () => {
     perfil.botonDatosFiscales();
   });
 
-  it("Agregar nuevos datos fiscales @regression", () => {
+  it("Agregar nuevos datos fiscales @sanity @happyPath @regression", () => {
     datosFiscales.botonAgregarDatosFiscales();
     datosFiscales.llenarDatosFiscales(
       datosFiscalesData.razonSocial,
@@ -44,16 +44,16 @@ describe("Datos fiscales", () => {
      cy.validarMensajeExito("Los datos fiscales se agregaron con éxito");
   });
 
-  it("Editar datos fiscales @regression", () => {
+  it("Editar datos fiscales @sanity @happyPath @regression", () => {
     datosFiscales.botonEditarDatosFiscales(datosFiscalesData.razonSocial);
     datosFiscales.editarDatosFiscales();
     datosFiscales.botonGuardarDatos();
     cy.esperarSpinnerSiExiste();
     //datosFiscales.validarMensajeExito('Los datos fiscales se editaron con éxito');
-     cy.validarMensajeExito("Los datos fiscales se agregaron con éxito"); // deberia decir se editaron
+     cy.validarMensajeExito("Los datos fiscales se actualizaron con éxito"); // deberia decir se editaron
   });
 
-  it("Eliminar datos fiscales @regression", () => {
+  it("Eliminar datos fiscales @sanity @happyPath @regression", () => {
     datosFiscales.eliminarDatosFiscales(datosFiscalesData.razonSocial);
     perfil.botonAceptar();
     cy.esperarSpinnerSiExiste();

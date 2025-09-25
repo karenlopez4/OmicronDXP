@@ -53,7 +53,7 @@ class DatosFiscalesPage {
       .clear()
       .type(getRandomPostalCode()).blur();
 
-    this.seleccionarPaisYColonia();
+    this.seleccionarMunicipioYColonia();
 
     cy.get('input[formcontrolname="street"]').click().type(" edit");
     cy.get('input[formcontrolname="number"]').type(getRandomNumber());
@@ -71,7 +71,7 @@ class DatosFiscalesPage {
   }
 
   llenarDireccion(calle) {
-    this.seleccionarPaisYColonia();
+    this.seleccionarMunicipioYColonia();
     cy.get('input[formcontrolname="street"]').type(calle);
     cy.get('input[formcontrolname="number"]').type(getRandomNumber());
   }
@@ -80,17 +80,17 @@ class DatosFiscalesPage {
     cy.get('input[formcontrolname="correo"]').clear().type(correo);
   }
 
-  seleccionarPaisYColonia() {
+  seleccionarMunicipioYColonia() {
     cy.get('mat-select[formcontrolname="country"]').click();
-    cy.get('mat-option[tabindex="0"]').first().click();
+    cy.get('mat-option[tabindex="0"]').should('be.visible').first().click();
 
     cy.get('mat-select[formcontrolname="suburb"]').click();
-    cy.get('mat-option[tabindex="0"]').first().click();
+    cy.get('mat-option[tabindex="0"]').should('be.visible').first().click();
   }
 
   seleccionarCFDI() {
     cy.get('mat-select[formcontrolname="cfdi"]').click();
-    cy.get('mat-option[tabindex="0"]').first().click();
+    cy.get('mat-option[tabindex="0"]').should('be.visible').first().click();
   }
 
     seleccionarRegimenFiscal(nombreRegimen) {

@@ -23,9 +23,9 @@ class direccionEntregaPage {
         cy.get('input[formcontrolname="contact"]').type(nombrePersona);
         cy.get('input[formcontrolname="PostalCode"]').type(codigos[Math.floor(Math.random() * (34 - 1 + 1) + 1)]).blur();
         cy.get('mat-select[formcontrolname="Municipality"]').click();
-        cy.get('mat-option[tabindex="0"]').click();
+        cy.get('mat-option[tabindex="0"]').should('be.visible').first().click();
         cy.get('mat-select[formcontrolname="Neighborhood"]').click();
-        cy.get('mat-option[tabindex="0"]').click();
+        cy.get('mat-option[tabindex="0"]').should('be.visible').first().click();
         cy.get('input[formcontrolname="Street"]').type(calle);
         cy.get('input[formcontrolname="Number"]').type(Math.floor(Math.random() * (75 - 25 + 1)) + 25);
         cy.get('input[formcontrolname="PropertyName"]').type(establecimiento + ' ' + Math.floor(Math.random() * (75 - 25 + 1)) + 25);
@@ -68,9 +68,9 @@ class direccionEntregaPage {
         cy.get('input[formcontrolname="contact"]').clear().type(nombre2);
         cy.get('input[formcontrolname="PostalCode"]').clear().type(cp2).blur();
         cy.get('mat-select[formcontrolname="Municipality"]').click();
-        cy.get('mat-option[tabindex="0"]').click();
+        cy.get('mat-option[tabindex="0"]').should('be.visible').first().click();
         cy.get('mat-select[formcontrolname="Neighborhood"]').click();
-        cy.get('mat-option[tabindex="0"]').click();
+        cy.get('mat-option[tabindex="0"]').should('be.visible').first().click();
         cy.get('input[formcontrolname="Street"]').clear().type(calle2);
         cy.get('input[formcontrolname="Number"]').clear().type(numeroCasa2);
         cy.get('input[formcontrolname="PropertyName"]').clear().type(establecimiento2);

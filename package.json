@@ -26,7 +26,14 @@
     "cy:run:carrito:bioequal": "cypress run --spec cypress/e2e/carrito/bioequal/*.spec.js --browser chrome --headless",
     "cy:run:carrito:dermazone": "cypress run --spec cypress/e2e/carrito/dermazone/*.spec.js --browser chrome --headless",
     "cy:run:carrito:reve": "cypress run --spec cypress/e2e/carrito/reve/*.spec.js --browser chrome --headless",
-    "run:email": "node cypress/email.js"
+    "run:email": "node cypress/email.js",
+
+    "cy:run:sanity": "cypress run --spec 'cypress/e2e/**/*.spec.js' --browser chrome --headless --env grep=@sanity",
+    "cy:run:smoke": "cypress run --spec 'cypress/e2e/**/*.spec.js' --browser chrome --headless --env grep=@smoke",
+    "cy:run:regresion": "cypress run --spec 'cypress/e2e/**/*.spec.js' --browser chrome --headless --env grep=@regression",
+    "cy:run:critical": "cypress run --spec 'cypress/e2e/**/*.spec.js' --browser chrome --headless --env grep=@critical",
+    "cy:run:happypath": "cypress run --spec 'cypress/e2e/**/*.spec.js' --browser chrome --headless --env grep=@happyPath",
+    "cy:run:negative": "cypress run --spec 'cypress/e2e/**/*.spec.js' --browser chrome --headless --env grep=@negative"
   },
   "keywords": [
     "tst"
@@ -34,6 +41,7 @@
   "author": "David",
   "license": "ISC",
   "devDependencies": {
+    "@cypress/grep": "^4.1.1",
     "cypress": "^10.11.0",
     "cypress-mochawesome-reporter": "^3.2.2",
     "mochawesome": "^7.1.3",

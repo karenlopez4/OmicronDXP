@@ -6,7 +6,7 @@ import direccionEntregaPage from "./direccionEntregaPage";
 let loginData;
 let direccionData;
 
-describe("Dirección de entrega", () => {
+describe("Dirección de entrega ", () => {
   const perfil = new perfilPage();
   const direccionEntrega = new direccionEntregaPage();
   const log = new loginPage();
@@ -33,7 +33,7 @@ describe("Dirección de entrega", () => {
     direccionEntrega.seleccionarTabDireccionEntregaMedico();
   });
 
-  it("✅ Debería agregar una nueva dirección de entrega", () => {
+  it("✅ Debería agregar una nueva dirección de entrega @sanity @happyPath @regression", () => {
     direccionEntrega.botonAgregarDireccionEntrega();
     direccionEntrega.datosDireccionEntrega(
       direccionData.alias,
@@ -49,7 +49,7 @@ describe("Dirección de entrega", () => {
     cy.validarMensajeExito("La dirección de entrega se agregó con éxito");
   });
 
-  it("✏️ Validar que se pueda editar la nueva direccion en direccion de entrega", () => {
+  it("✏️ Validar que se pueda editar la nueva direccion en direccion de entrega @sanity @happyPath @regression", () => {
     direccionEntrega.botonEditarDireccion(direccionData.alias);
     direccionEntrega.datosEditarDireccion(
       direccionData.nombrePersona,
@@ -60,7 +60,7 @@ describe("Dirección de entrega", () => {
     );
   });
 
-  it("🗑️ Debería eliminar la dirección de entrega", () => {
+  it("🗑️ Debería eliminar la dirección de entrega @sanity @happyPath @regression", () => {
     direccionEntrega.botonEliminarDireccion(direccionData.alias);
     perfil.botonAceptar();
     cy.esperarSpinnerSiExiste();

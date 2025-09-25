@@ -17,7 +17,7 @@ class paginaInicio{
                 cy.get('input[name="username"]').clear().type(correo);
                 cy.get('input[name="password"]').clear().type(contrasena);
                 cy.get('input[name="login"]').click();      
-                cy.wait(5000);
+                cy.esperarSpinnerSiExiste();
             }
 
             
