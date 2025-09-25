@@ -3,6 +3,17 @@ var codigos = ['03820', '03240', '03230', '03400', '03560', '03610', '03840', '0
     '03660', '03310', '03700', '03200', '03600', '03530', '03330', '03550'];
 class direccionEntregaPage {
 
+    seleccionarTabDireccionEntregaMedico() {
+        cy.get('[role="tab"]')
+        .contains('Direcciones de Entrega Pacientes') //Médico
+        .then(($tab) => {
+            if (!$tab.hasClass('mat-tab-label-active')) {
+                cy.wrap($tab).click();
+            }
+        });
+   }
+
+    
     botonAgregarDireccionEntrega() {
         cy.get('button[name="btn-add-address-delivery"]').first().click();
     };
@@ -12,9 +23,9 @@ class direccionEntregaPage {
         cy.get('input[formcontrolname="contact"]').type(nombrePersona);
         cy.get('input[formcontrolname="PostalCode"]').type(codigos[Math.floor(Math.random() * (34 - 1 + 1) + 1)]).blur();
         cy.get('mat-select[formcontrolname="Municipality"]').click();
-        cy.get('mat-option[tabindex="0"]').click();
+        cy.get('mat-option[tabindex="0"]').should('be.visible').first().click();
         cy.get('mat-select[formcontrolname="Neighborhood"]').click();
-        cy.get('mat-option[tabindex="0"]').click();
+        cy.get('mat-option[tabindex="0"]').should('be.visible').first().click();
         cy.get('input[formcontrolname="Street"]').type(calle);
         cy.get('input[formcontrolname="Number"]').type(Math.floor(Math.random() * (75 - 25 + 1)) + 25);
         cy.get('input[formcontrolname="PropertyName"]').type(establecimiento + ' ' + Math.floor(Math.random() * (75 - 25 + 1)) + 25);
@@ -29,7 +40,18 @@ class direccionEntregaPage {
 
 
     botonEditarDireccion(alias) {
-        cy.get(`p[id="btn-${alias.toLowerCase()}-edit"]`).first().click();
+    const id = `btn-${alias.toLowerCase()}-edit`;
+    const escapedId = CSS.escape(id);
+
+    cy.get(`#${escapedId}`).then($els => {
+        console.log(`Elementos encontrados: ${$els.length}`);
+    });
+
+    cy.get(`#${escapedId}`)
+        .first()
+        .scrollIntoView()
+        .should('be.visible')
+        .click();
     }
 
 
@@ -46,9 +68,9 @@ class direccionEntregaPage {
         cy.get('input[formcontrolname="contact"]').clear().type(nombre2);
         cy.get('input[formcontrolname="PostalCode"]').clear().type(cp2).blur();
         cy.get('mat-select[formcontrolname="Municipality"]').click();
-        cy.get('mat-option[tabindex="0"]').click();
+        cy.get('mat-option[tabindex="0"]').should('be.visible').first().click();
         cy.get('mat-select[formcontrolname="Neighborhood"]').click();
-        cy.get('mat-option[tabindex="0"]').click();
+        cy.get('mat-option[tabindex="0"]').should('be.visible').first().click();
         cy.get('input[formcontrolname="Street"]').clear().type(calle2);
         cy.get('input[formcontrolname="Number"]').clear().type(numeroCasa2);
         cy.get('input[formcontrolname="PropertyName"]').clear().type(establecimiento2);
@@ -56,7 +78,10 @@ class direccionEntregaPage {
         cy.get('input[formcontrolname="BetweenStreets"]').clear().type(entrecalles2);
         cy.get('input[formcontrolname="References"]').clear().type(referenciasDireccion2);
         cy.get('button[name="btn-save"]').click();
-        cy.get('button[name="btn-accept"]').click();
+        
+        cy.esperarSpinnerSiExiste();
+        cy.validarMensajeExito("La dirección de entrega se actualizó con éxito");
+
 
         //Validaciones
         cy.contains(nombre2.toUpperCase()).should('exist');

@@ -24,3 +24,15 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+Cypress.Commands.add('esperarSpinnerSiExiste', () => {
+  cy.get('body').then(($body) => {
+    if ($body.find('.la-ball-clip-rotate-pulse').length > 0) {
+      cy.get('.la-ball-clip-rotate-pulse', { timeout: 20000 }).should('not.exist');
+    }
+  });
+});
+
+Cypress.Commands.add('validarMensajeExito', (mensaje) => {
+  cy.contains('span', mensaje).should('exist');
+  cy.get('button[name="btn-accept"]').click();
+});
